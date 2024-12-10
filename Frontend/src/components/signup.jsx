@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Toast, { toast } from "react-hot-toast";
+import { urlBase } from "../url";
 
 const Signup = () => {
   const [user, setUser] = useState({
@@ -22,7 +23,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:3000/api/v1/user/register`,
+        `${urlBase}/api/v1/user/register`,
         user,
         {
           headers: {

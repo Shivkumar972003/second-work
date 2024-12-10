@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setMessages } from "../redux/messageSlice";
+import { urlBase } from "../url";
 
 const useGetMessages = () => {
     const {selectedUser} = useSelector(store=>store.user);
@@ -11,7 +12,7 @@ const useGetMessages = () => {
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get(
-          `http://localhost:3000/api/v1/message/${selectedUser?._id}`
+          `${urlBase}/api/v1/message/${selectedUser?._id}`
         );
         dispatch(setMessages(res.data))
       } catch (error) {
